@@ -1,0 +1,32 @@
+{
+  "name": "football-worldcup-scoreboard",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint:js": "eslint . --ext js,jsx",
+    "lint:js:fix": "eslint . --ext js,jsx --fix",
+    "test": "jest ./src/**/*",
+    "deploy:vercel": "vercel"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.12.13",
+    "@testing-library/react": "^11.2.5",
+    "@vitejs/plugin-react-refresh": "^1.1.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.20.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "jest": "^26.6.3",
+    "vite": "^2.0.1"
+  }
+}
