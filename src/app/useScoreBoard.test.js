@@ -25,10 +25,36 @@ test('createMatch should update useScoreBoard state when called with 2 string as
   expect(result.current.matches[_testid].homeTeam).toBe('Home Team')
   expect(result.current.matches[_testid].awayTeam).toBe('Away Team')
   expect(result.current.matches[_testid].status).toBe('in_progress')
+
+  // assert multiple match creation
+  act(() => {
+    result.current.createMatch('Home Team', 'Away Team')
+  })
+  expect(Object.keys(result.current.matches).length).toBe(2)
 })
 
-test('should be able to update the score of a match', () => {
-  expect(true).toBe(true)
+test('finishMatch should update a specific match status to "ended" with an ID as parameter', () => {
+  const { result } = renderHook(() => useScoreBoard())
+
+  // Create a new match
+  let _testid = ''
+  act(() => {
+    _testid = result.current.createMatch('Home Team', 'Away Team')
+  })
+
+  // assert parameters
+  act(() => {
+    result.current.finishMatch('non-existing-id')
+    result.current.finishMatch()
+  })
+  expect(result.current.matches[_testid].status).toBe('in_progress')
+
+  // assert match ending
+  act(() => {
+    result.current.finishMatch(_testid)
+  })
+  expect(Object.keys(result.current.matches).length).toBe(1)
+  expect(result.current.matches[_testid].status).toBe('ended')
 })
 
 test('should be able to end/remove matchs', () => {
