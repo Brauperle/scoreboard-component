@@ -57,8 +57,28 @@ test('finishMatch should update a specific match status to "ended" with an ID as
   expect(result.current.matches[_testid].status).toBe('ended')
 })
 
-test('should be able to end/remove matchs', () => {
-  expect(true).toBe(true)
+test('updateMatchScore should update a specific match scorer with an ID & new scores values as parameter', () => {
+  const { result } = renderHook(() => useScoreBoard())
+  // Create a new match
+  let _testid = ''
+  act(() => {
+    _testid = result.current.createMatch('Home Team', 'Away Team')
+  })
+
+  act(() => {
+    result.current.updateMatchScore('non-existing-id')
+    result.current.updateMatchScore(_testid, 'string-parameters', 'string-parameters')
+    result.current.updateMatchScore()
+  })
+  expect(result.current.matches[_testid].score[0]).toBe(0)
+  expect(result.current.matches[_testid].score[1]).toBe(0)
+
+  // assert score updating
+  act(() => {
+    result.current.updateMatchScore(_testid, 1, 4)
+  })
+  expect(result.current.matches[_testid].score[0]).toBe(1)
+  expect(result.current.matches[_testid].score[1]).toBe(4)
 })
 
 test('should be able to get matches history filtered by total score & most recent for equals scores', () => {

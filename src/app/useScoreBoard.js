@@ -48,8 +48,26 @@ const useScoreBoard = () => {
     })
   }
 
-  const updateMatchScore = (hts, ats) => {
+  /**
+   * updateMatchScore
+   * Update a match score with it's match ID
+   *
+   * @param {string} mid match ID of the match to be updated
+   * @param {number} hts Home Team current score
+   * @param {number} ats Away Team current score
+   */
+  const updateMatchScore = (mid, hts, ats) => {
+    if (!mid || !hts || !ats) return
+    if (typeof hts !== 'number' || typeof ats !== 'number') return
+    if (!matches[mid]) return
 
+    setMatches({
+      ...matches,
+      [mid]: {
+        ...matches[mid],
+        score: [hts, ats]
+      }
+    })
   }
 
   const getMatchHistory = () => {
