@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ScoreBoard from './ScoreBoard/ScoreBoard'
+import 'tailwindcss/tailwind.css'
 
 ReactDOM.render(
   <React.StrictMode>
