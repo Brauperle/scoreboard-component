@@ -20,6 +20,7 @@ const useScoreBoard = () => {
     setMatches({
       ...matches,
       [_id]: {
+        id: _id,
         homeTeam: ht,
         awayTeam: at,
         status: 'in_progress',
