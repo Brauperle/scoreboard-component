@@ -1,3 +1,5 @@
+## Demo
+https://scoreboard-component.vercel.app/
 ## Setup
 ```
 npm run dev     // dev server
