@@ -85,7 +85,7 @@ test('updateMatchScore should update a specific match scorer with an ID & new sc
   expect(result.current.matches[_testid].score[1]).toBe(4)
 })
 
-test('getMatchHistory should re-order the matches by total score & by most recently added if same score', async () => {
+test('getAllMatchOrdered should re-order the matches by total score & by most recently added if same score', async () => {
   const { result } = renderHook(() => useScoreBoard())
 
   let _matchHistory = []
@@ -124,7 +124,7 @@ test('getMatchHistory should re-order the matches by total score & by most recen
     AAid = await result.current.createMatch('Argentina', 'Australia')
     await result.current.updateMatchScore(AAid, 3, 1)
 
-    _matchHistory = await result.current.getMatchHistory()
+    _matchHistory = await result.current.getAllMatchOrdered()
   })
 
   // Check for correct order

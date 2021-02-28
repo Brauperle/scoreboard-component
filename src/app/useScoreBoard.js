@@ -13,7 +13,7 @@ const useScoreBoard = () => {
    * @return {string} match ID of the newly created match
    */
   const createMatch = (ht, at) => {
-    if (ht === undefined || at === undefined) return
+    if (!ht || !at) return
     if (typeof ht !== 'string' || typeof at !== 'string') return
 
     const _id = nanoid()
@@ -37,7 +37,7 @@ const useScoreBoard = () => {
    * @param {string} mid match ID of the match to be finished
    */
   const finishMatch = mid => {
-    if (mid === undefined) return
+    if (!mid) return
     if (!matches[mid]) return
 
     setMatches({
@@ -58,7 +58,7 @@ const useScoreBoard = () => {
    * @param {number} ats Away Team current score
    */
   const updateMatchScore = (mid, hts, ats) => {
-    if (mid === undefined || hts === undefined || ats === undefined) return
+    if (!mid || hts === undefined || ats === undefined) return
     if (typeof hts !== 'number' || typeof ats !== 'number') return
     if (!matches[mid]) return
 
@@ -72,12 +72,12 @@ const useScoreBoard = () => {
   }
 
   /**
-   * getMatchHistory
+   * getAllMatchOrdered
    * Re-order the matches by total score & by most recently added if same score
    *
    * @return {Array} Array of ordered matches
    */
-  const getMatchHistory = () => {
+  const getAllMatchOrdered = () => {
     const sortedMatchIDs = Object.keys(matches).sort((mid1, mid2) => {
       const totalScore1 = matches[mid1].score[0] + matches[mid1].score[1]
       const totalScore2 = matches[mid2].score[0] + matches[mid2].score[1]
@@ -96,7 +96,7 @@ const useScoreBoard = () => {
     createMatch,
     finishMatch,
     updateMatchScore,
-    getMatchHistory
+    getAllMatchOrdered
   }
 }
 
