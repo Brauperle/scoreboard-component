@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app/App'
+import ScoreBoard from './ScoreBoard/ScoreBoard'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ScoreBoard />
   </React.StrictMode>,
   document.getElementById('root')
 )
